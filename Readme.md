@@ -7,10 +7,15 @@ uv run src/main.py
 ## Operation
 
 ### Search lines
+
 Ivanow Ivan I.
+
 Payment for Ivanov Ivan.
+
 Pay for tool for Ivan Ivanov for money
+
 #### I want to make a payment for Ivanow Vania for his great service
+
 Search Results for a query: I want to make a payment for Ivanow Vania for his great service
 ================================================
 I've accessed the names-base.json file and have the following information:
@@ -34,6 +39,7 @@ Please confirm if this is the correct person you intended to make a payment for.
 ================================================
 
 #### оплата за Петров Peter (1)
+
 Search Results for a query: оплата за Петров Peter (1)
 ================================================
 Here's what I found in the `names-base.json` file:
@@ -51,10 +57,11 @@ The search string "оплата за Петров Peter (1)" contained names sim
 
 
 ### Should result successfully - no occurences
-Doroshecko Ivan
+
+Doroshenko Ivan
 
 
-### Gives error
+### Gives error (needs to check)
 Петров Петро
 
 
