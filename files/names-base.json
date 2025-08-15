@@ -1,0 +1,23 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "names": [
+        "Ivanov Ivan Ivanovich",
+        "Іванов Іван Івановіч",
+        "Иванов Иван Иванович"
+      ]
+    },
+    {
+      "id": 2,
+      "names": [
+        "Петров Петр Петрович",
+        "Петрів Петр Петровіч",
+        "Petrov Petr Petrovich",
+        "Petriv Peter Peterovich",
+        "Petriw Pitr Pitrovich",
+        "Petrow Pyotr Pyotrovich"
+      ]
+    }
+  ]
+}
