@@ -1,5 +1,5 @@
 import os
-
+import time
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.agents import create_tool_calling_agent, AgentExecutor
 from langchain.prompts import PromptTemplate
@@ -13,7 +13,8 @@ load_dotenv()
 class FileSearchAgent:
     def __init__(self):
         self.llm = ChatGoogleGenerativeAI(
-            model="gemini-2.5-flash-lite",
+            model="gemini-2.0-flash-lite",
+            # model="gemini-2.5-flash-lite",
             # model="gemini-1.5-flash", 
             google_api_key=os.getenv("GEMINI_API_KEY")
             )
@@ -48,9 +49,15 @@ class FileSearchAgent:
         """Search for files and read their content based on the query."""
         target_dir = directory or 'files'
         try:
+            
+            llm_start = time.perf_counter()
             result = self.executor.invoke(
                 {"input": query, "target_dir": target_dir}
             )
+            llm_end = time.perf_counter()
+            llm_time_ms = int((llm_end - llm_start) * 1000)
+            print(f"LLM invocation took {llm_time_ms} ms")
+
             return result['output']
         except Exception as e:
             return f"Error during search: {str(e)}"

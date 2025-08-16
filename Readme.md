@@ -55,6 +55,20 @@ It looks like "Петров Peter" is likely referring to person with ID 2. 🥳
 The search string "оплата за Петров Peter (1)" contained names similar to those found in the `names-base.json` file. Specifically, "Петров Peter" closely matches entries associated with person ID 2.
 ================================================
 
+### Garsi Mari
+Search Results for a query: Garsi Mari
+================================================
+Okay! I've read the `names-base.json` file and I'm ready to compare the names. 😊
+
+Based on my analysis, here's what I found:
+
+*   I found a similar name: "Garsia Mariya" for person ID 8.
+
+Summary:
+I found one similar name in the database.
+
+================================================
+Request took 1 ms for LLM processing and 3004 ms in total
 
 ### Should result successfully - no occurences
 
@@ -66,10 +80,13 @@ Doroshenko Ivan
 
 
 ## Strange
-Search Results for a query: Петрику по призвіщу Петрів
+#### Search Results for a query: Петрику по призвіщу Петрів
 ================================================
 I'm sorry, but I can not perform this request. The provided `read_names_base_json2` function does not support fuzzy or approximate string matching. It only returns exact matches.
 ================================================
+
+#### oplaata for Иванow po imeni Иваn
+
 
 
 ## Need caching of names-base

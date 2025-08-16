@@ -1,6 +1,7 @@
 import os
 import sys
 from pathlib import Path
+import time
 
 
 project_root = Path(__file__).parent.parent
@@ -37,9 +38,17 @@ def main():
         if not os.path.exists(directory):
             print(f"The directory '{directory}' does not exist. Please try again.")
             continue
+
         
+        llm_start = time.perf_counter()
         results = agent.search(query, directory)
+        llm_end = time.perf_counter()
+
         display_search_results(query, results)
+        
+
+        llm_time_ms = int((llm_end - llm_start) * 1000)
+        print(f"Request took {llm_time_ms} ms for LLM processing")
 
         if input("\nDo you want to perform another search? (yes/no): ").strip().lower() != 'yes':
             print("Thank you for using the File Search Assistant! Goodbye! 👋")
