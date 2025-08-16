@@ -43,26 +43,16 @@ def read_names_base_json2(file_path: str) -> str:
         with open(file_path, 'r', encoding='utf-8') as file:
             data = json.load(file)
         people = data
-        # # Handle if data is a dict (single person)
-        # if isinstance(data, dict):
-        #     data = [data]
-        # # Handle if data is a list of strings (not dicts)
-        # if isinstance(data, list) and all(isinstance(item, str) for item in data):
-        #     people = [{"id": None, "names": [item]} for item in data]
-        # # Handle if data is a list of dicts
-        # elif isinstance(data, list) and all(isinstance(item, dict) for item in data):
-        #     people = []
-        #     for person in data:
-        #         person_id = person.get("id", None)
-        #         names = person.get("names", [])
-        #         # If names is a string, wrap in list
-        #         if isinstance(names, str):
-        #             names = [names]
-        #         people.append({"id": person_id, "names": names})
-        # else:
-        #     return f"Unexpected JSON structure in {file_path}"
-        
-        print(f"Read {len(people)} people from {file_path}")
-        return f"People in {file_path}:\n" + json.dumps(people, ensure_ascii=False, indent=2)
+
+        if isinstance(data, dict) and "data" in data:
+            people = data["data"]
+        else:
+            people = data
+        id_count = sum(1 for person in people if isinstance(person, dict) and person.get("id") is not None)
+        print(f"Read {len(people)} people from {file_path}, {id_count} ids")
+        return f"People in {file_path} ({id_count} ids):\n" + json.dumps(people, ensure_ascii=False, indent=2)[:50] + "[...50]..."
+           
+        ## print(f"Read {len(people)} people from {file_path}")
+        ## return f"People in {file_path}:\n" + json.dumps(people, ensure_ascii=False, indent=2)
     except Exception as e:
         return f"Error reading {file_path}: {str(e)}"
